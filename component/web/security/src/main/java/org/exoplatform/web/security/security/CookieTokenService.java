@@ -24,11 +24,12 @@ import org.exoplatform.commons.chromattic.ChromatticLifeCycle;
 import org.exoplatform.commons.chromattic.ChromatticManager;
 import org.exoplatform.commons.chromattic.ContextualTask;
 import org.exoplatform.commons.chromattic.SessionContext;
-import org.exoplatform.container.component.ComponentPlugin;
+import org.exoplatform.commons.utils.PropertyManager;
 import org.exoplatform.container.xml.InitParams;
 import org.exoplatform.web.security.GateInToken;
+import org.gatein.common.logging.Logger;
+import org.gatein.common.logging.LoggerFactory;
 import org.gatein.wci.security.Credentials;
-
 import java.util.Collection;
 import java.util.Date;
 
@@ -39,6 +40,8 @@ import java.util.Date;
 public class CookieTokenService extends AbstractTokenService<GateInToken, String>
 {
 
+   private static final Logger LOG = LoggerFactory.getLogger(CookieTokenService.class);
+
    /** . */
    public static final String LIFECYCLE_NAME="lifecycle-name";
 	
@@ -48,7 +51,6 @@ public class CookieTokenService extends AbstractTokenService<GateInToken, String
    /** . */
    private String lifecycleName="autologin";
 
-   //TODO: Introduce the concept of priority and store the plugins in a map structure
    private AbstractCodec codec;
    
    public CookieTokenService(InitParams initParams, ChromatticManager chromatticManager)
@@ -61,18 +63,24 @@ public class CookieTokenService extends AbstractTokenService<GateInToken, String
       }
       this.chromatticLifeCycle = chromatticManager.getLifeCycle(lifecycleName);
       
-      //Set the default codec
-      this.codec = new ToThrowAwayCodec();
+      initCodec();
    }
 
-   public final void setupCodec(ComponentPlugin codecPlugin)
+   private void initCodec()
    {
-      if(codecPlugin instanceof AbstractCodec)
+      String className = PropertyManager.getProperty("gatein.codec.class");
+      try
       {
-         this.codec = (AbstractCodec)codecPlugin;
+         this.codec = Class.forName(className).asSubclass(AbstractCodec.class).newInstance();
+         LOG.info("Init the codec " + className + " successfully!");
+      }
+      catch(Exception ex)
+      {
+         LOG.warn("Use ToThrowAwayCodec due to an exception occurs while instantiate the codec", ex);
+         this.codec = new ToThrowAwayCodec();
       }
    }
-   
+
    public String createToken(final Credentials credentials)
    {
       if (validityMillis < 0)
