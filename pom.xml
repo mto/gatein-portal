@@ -101,6 +101,7 @@
      <version.plugin.clean>2.4.1</version.plugin.clean>
      <version.yuicompressor-maven-plugin>0.7.1</version.yuicompressor-maven-plugin>
      <version.plugin.japex>1.2.3</version.plugin.japex>
+     <version.shiro>1.2.1</version.shiro>
 
 
 
@@ -122,6 +123,7 @@
       <module>webui</module>
       <module>portlet</module>
       <module>web</module>
+      <module>shiro</module>
       <module>examples</module>
       <module>starter</module>
       <module>wsrp-integration</module>
@@ -473,6 +475,11 @@
          </dependency>
 
         <!-- GateIn -->
+        <dependency>
+          <groupId>org.gatein.portal</groupId>
+          <artifactId>exo.portal.shiro</artifactId>
+          <version>3.5.0.Final-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.gatein.portal</groupId>
             <artifactId>exo.portal.component.common</artifactId>
@@ -990,6 +997,13 @@
           <groupId>org.jboss.marshalling</groupId>
           <artifactId>jboss-marshalling-river</artifactId>
           <version>${org.jboss.marshalling.version}</version>
+        </dependency>
+
+        <!-- Shiro dependencies-->
+        <dependency>
+          <groupId>org.apache.shiro</groupId>
+          <artifactId>shiro-core</artifactId>
+          <version>${version.shiro}</version>
         </dependency>
 
       </dependencies>

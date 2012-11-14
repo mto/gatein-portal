@@ -808,6 +808,16 @@
       <artifactId>mime-util</artifactId>
     </dependency>
 
+    <!-- Shiro artifact -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gatein.portal</groupId>
+      <artifactId>exo.portal.shiro</artifactId>
+    </dependency>
+
  <!-- War files -->
     <dependency>
       <?rename portal.war?>
