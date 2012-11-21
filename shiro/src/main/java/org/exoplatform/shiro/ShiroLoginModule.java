@@ -85,7 +85,7 @@ public class ShiroLoginModule implements LoginModule
       }
       if (username != null && password != null)
       {
-         org.apache.shiro.subject.Subject shiroSubject = shiroService.createSubject(username);
+         org.apache.shiro.subject.Subject shiroSubject = shiroService.createSubject();
          try
          {
             shiroSubject.login(new UsernamePasswordToken(username, password));

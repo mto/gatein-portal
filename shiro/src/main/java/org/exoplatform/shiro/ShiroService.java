@@ -19,12 +19,19 @@
 package org.exoplatform.shiro;
 
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.Ini;
 import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.mgt.RememberMeManager;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.subject.SubjectContext;
 import org.apache.shiro.util.Factory;
+import org.exoplatform.services.organization.OrganizationService;
 import java.io.InputStream;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -33,13 +40,17 @@ import java.util.concurrent.ConcurrentMap;
  * @author <a href="hoang281283@gmail.com">Minh Hoang TO</a>
  * @date 11/14/12
  */
-public class ShiroService
+public class ShiroService implements RememberMeManager
 {
    private final ConcurrentMap<String, Subject> subjects;
 
    private final SecurityManager sm;
 
-   public ShiroService() throws Exception
+   /**
+    *  Declare OrganizationService in constructor param to ensure the service exists by the time
+    * Shiro SecurityManager is initialized
+    */
+   public ShiroService(OrganizationService orgService) throws Exception
    {
       subjects = new ConcurrentHashMap<String, Subject>();
 
@@ -49,11 +60,13 @@ public class ShiroService
 
       Factory<SecurityManager> factory = new IniSecurityManagerFactory(config);
       sm = factory.getInstance();
+      //Hardcode for the moment
+      ((DefaultSecurityManager)sm).setRememberMeManager(this);
    }
 
    private Subject storeSubject(String username, Subject subject)
    {
-      return subjects.putIfAbsent(username, subject);
+      return subjects.put(username, subject);
    }
 
    public Subject getSubject(String username)
@@ -66,33 +79,36 @@ public class ShiroService
       subjects.remove(username);
    }
 
-   public Subject createSubject(String username)
+   public Subject createSubject()
    {
-      return new GateInSubject(new Subject.Builder(sm).buildSubject(), username);
+      return new Subject.Builder(sm).buildSubject();
    }
 
-   class GateInSubject extends SubjectDecorator
+   @Override
+   public PrincipalCollection getRememberedPrincipals(SubjectContext subjectContext)
    {
-      private String username;
+      return null;
+   }
 
-      public GateInSubject(Subject _decorated, String _username)
-      {
-         super(_decorated);
-         username = _username;
-      }
+   @Override
+   public void forgetIdentity(SubjectContext subjectContext)
+   {
+   }
 
-      @Override
-      public void login(AuthenticationToken token) throws AuthenticationException
-      {
-         super.login(token);
-         ShiroService.this.storeSubject(username, this);
-      }
+   @Override
+   public void onSuccessfulLogin(Subject subject, AuthenticationToken token, AuthenticationInfo info)
+   {
+      storeSubject(((UsernamePasswordToken)token).getUsername(), subject);
+   }
 
-      @Override
-      public void logout()
-      {
-         super.logout();
-         ShiroService.this.removeSubject(username);
-      }
+   @Override
+   public void onFailedLogin(Subject subject, AuthenticationToken token, AuthenticationException ae)
+   {
+   }
+
+   @Override
+   public void onLogout(Subject subject)
+   {
+
    }
 }

@@ -64,4 +64,7 @@
    <import>war:/conf/portal/web-configuration.xml</import>
    <import>war:/conf/portal/gadget-configuration.xml</import>
    <import>war:/conf/portal/redirect-configuration.xml</import>
+
+   <!-- Shiro integration -->
+   <import>war:/conf/shiro/shiro-configuration.xml</import>
 </configuration>
