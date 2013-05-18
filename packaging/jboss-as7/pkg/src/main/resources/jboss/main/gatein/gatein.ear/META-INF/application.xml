@@ -69,6 +69,12 @@
       <context-root>redirect-portlet</context-root>
     </web>
   </module>
+  <module>
+    <web>
+      <web-uri>leavecontrol.war</web-uri>
+      <context-root>leavecontrol</context-root>
+    </web>
+  </module>
   <!--module>
     <web>
       <web-uri>wsrp-admin-gui.war</web-uri>

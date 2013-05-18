@@ -148,9 +148,12 @@
     <copy tofile="${jbossas.target.dir}/gatein/gatein.ear/redirect-portlet.war">
       <fileset refid="org.gatein.portal.portlet:redirect:war"/>
     </copy>
+    <copy tofile="${jbossas.target.dir}/gatein/gatein.ear/leavecontrol.war">
+      <fileset refid="com.iway.jbpm:leavecontrol:war"/>
+    </copy>
 
 
-    <!-- WSRP integration -->
+      <!-- WSRP integration -->
     <unzip dest="${jbossas.target.dir}/gatein/extensions/gatein-wsrp-integration.ear/extension-war.war">
       <fileset refid="org.gatein.integration:extension-war:war"/>
     </unzip>

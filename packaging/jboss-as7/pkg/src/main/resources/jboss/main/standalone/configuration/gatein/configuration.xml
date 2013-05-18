@@ -83,6 +83,9 @@
               <value>
                 <string>web</string>
               </value>
+              <value>
+                <string>leavecontrol</string>
+              </value>
             </collection>
           </field>
         </object>

@@ -83,6 +83,13 @@
       <artifactId>exo.portal.portlet.dashboard</artifactId>
       <type>war</type>
     </dependency>
+    <dependency>
+      <groupId>com.iway.jbpm</groupId>
+      <artifactId>leavecontrol</artifactId>
+      <type>war</type>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
 
     <!--         -->
     <!-- WSRP    -->
