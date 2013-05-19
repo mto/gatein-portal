@@ -6,146 +6,27 @@
              xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
              xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
              xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
-    <process processType="Private" isExecutable="true" id="com.iway.jbpm" name="Leave Request Process"
+    <process processType="Private" isExecutable="true" id="com.iway.jbpm" name="Leave Request Process "
              tns:packageName="defaultPackage">
 
         <!-- nodes -->
-        <startEvent id="_1" name="StartProcess"/>
-        <endEvent id="_2" name="Leave Request Approved">
-            <terminateEventDefinition/>
-        </endEvent>
-        <intermediateCatchEvent id="_4" name="LeaderReplyEvent">
-            <dataOutput id="_4_Output" name="event"/>
-            <dataOutputAssociation>
-                <sourceRef>_4_Output</sourceRef>
-                <targetRef>leader_reply</targetRef>
-            </dataOutputAssociation>
-            <outputSet>
-                <dataOutputRefs>_4_Output</dataOutputRefs>
-            </outputSet>
-            <signalEventDefinition signalRef="LeaderReply"/>
-        </intermediateCatchEvent>
-        <parallelGateway id="_5" name="Wait Leader Reply" gatewayDirection="Converging"/>
-        <intermediateCatchEvent id="_6" name="ManagerReplyEvent">
-            <dataOutput id="_6_Output" name="event"/>
-            <dataOutputAssociation>
-                <sourceRef>_6_Output</sourceRef>
-                <targetRef>manager_reply</targetRef>
-            </dataOutputAssociation>
-            <outputSet>
-                <dataOutputRefs>_6_Output</dataOutputRefs>
-            </outputSet>
-            <signalEventDefinition signalRef="ManagerReply"/>
-        </intermediateCatchEvent>
-        <parallelGateway id="_7" name="Wait Manager Reply" gatewayDirection="Converging"/>
-        <exclusiveGateway id="_8" name="Check Leader Reply" gatewayDirection="Diverging"/>
-        <endEvent id="_9" name="Leader rejected">
-            <terminateEventDefinition/>
-        </endEvent>
-        <exclusiveGateway id="_10" name="Gateway" gatewayDirection="Diverging"/>
-        <endEvent id="_11" name="Manager rejected">
+        <startEvent id="_1" name="StartLeaveRequestProcess"/>
+        <scriptTask id="_2" name="LogLeaveRequest">
+            <script>System.out.println("Leave request sent");</script>
+        </scriptTask>
+        <endEvent id="_3" name="EndProcess">
             <terminateEventDefinition/>
         </endEvent>
 
         <!-- connections -->
-        <sequenceFlow id="_10-_2" sourceRef="_10" targetRef="_2" name="Manager approves" tns:priority="1">
-            <conditionExpression xsi:type="tFormalExpression"
-                                 language="http://www.jboss.org/drools/rule"></conditionExpression>
-        </sequenceFlow>
-        <sequenceFlow id="_4-_5" sourceRef="_4" targetRef="_5"/>
-        <sequenceFlow id="_1-_5" sourceRef="_1" targetRef="_5"/>
-        <sequenceFlow id="_6-_7" sourceRef="_6" targetRef="_7"/>
-        <sequenceFlow id="_8-_7" sourceRef="_8" targetRef="_7" name="Leader approves" tns:priority="1">
-            <conditionExpression xsi:type="tFormalExpression"
-                                 language="http://www.jboss.org/drools/rule"></conditionExpression>
-        </sequenceFlow>
-        <sequenceFlow id="_5-_8" sourceRef="_5" targetRef="_8"/>
-        <sequenceFlow id="_8-_9" sourceRef="_8" targetRef="_9" name="Leader rejects" tns:priority="1">
-            <conditionExpression xsi:type="tFormalExpression"
-                                 language="http://www.jboss.org/drools/rule"></conditionExpression>
-        </sequenceFlow>
-        <sequenceFlow id="_7-_10" sourceRef="_7" targetRef="_10"/>
-        <sequenceFlow id="_10-_11" sourceRef="_10" targetRef="_11" name="Manager rejects" tns:priority="1">
-            <conditionExpression xsi:type="tFormalExpression"
-                                 language="http://www.jboss.org/drools/rule"></conditionExpression>
-        </sequenceFlow>
-
+        <sequenceFlow id="_1-_2" sourceRef="_1" targetRef="_2"/>
+        <sequenceFlow id="_2-_3" sourceRef="_2" targetRef="_3"/>
     </process>
-
-    <bpmndi:BPMNDiagram>
-        <bpmndi:BPMNPlane bpmnElement="com.sample.bpmn">
-            <bpmndi:BPMNShape bpmnElement="_1">
-                <dc:Bounds x="7" y="205" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_2">
-                <dc:Bounds x="743" y="56" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_4">
-                <dc:Bounds x="130" y="58" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_5">
-                <dc:Bounds x="130" y="203" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_6">
-                <dc:Bounds x="335" y="48" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_7">
-                <dc:Bounds x="410" y="179" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_8">
-                <dc:Bounds x="230" y="201" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_9">
-                <dc:Bounds x="224" y="334" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_10">
-                <dc:Bounds x="568" y="201" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="_11">
-                <dc:Bounds x="710" y="322" width="48" height="48"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNEdge bpmnElement="_10-_2">
-                <di:waypoint x="592" y="225"/>
-                <di:waypoint x="767" y="80"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_4-_5">
-                <di:waypoint x="154" y="82"/>
-                <di:waypoint x="154" y="227"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_1-_5">
-                <di:waypoint x="31" y="229"/>
-                <di:waypoint x="154" y="227"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_6-_7">
-                <di:waypoint x="359" y="72"/>
-                <di:waypoint x="434" y="203"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_8-_7">
-                <di:waypoint x="254" y="225"/>
-                <di:waypoint x="434" y="203"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_5-_8">
-                <di:waypoint x="154" y="227"/>
-                <di:waypoint x="254" y="225"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_8-_9">
-                <di:waypoint x="254" y="225"/>
-                <di:waypoint x="248" y="358"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_7-_10">
-                <di:waypoint x="434" y="203"/>
-                <di:waypoint x="592" y="225"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="_10-_11">
-                <di:waypoint x="592" y="225"/>
-                <di:waypoint x="734" y="346"/>
-            </bpmndi:BPMNEdge>
-        </bpmndi:BPMNPlane>
-    </bpmndi:BPMNDiagram>
 
 </definitions>
