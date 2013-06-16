@@ -188,6 +188,9 @@
             <maven-resource group="com.thoughtworks.xstream" artifact="xstream"/>
             <!-- IWay JBPM artifacts -->
             <maven-resource group="com.iway.jbpm" artifact="core-demo"/>
+            <maven-resource group="com.iway.jbpm" artifact="domain"/>
+            <maven-resource group="com.iway.jbpm" artifact="iwayitems"/>
+            <maven-resource group="mysql" artifact="mysql-connector-java"/>
             <maven-resource group="org.jbpm" artifact="jbpm-flow"/>
             <maven-resource group="org.jbpm" artifact="jbpm-bpmn2"/>
             <maven-resource group="org.jbpm" artifact="jbpm-flow-builder"/>
