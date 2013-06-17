@@ -2,17 +2,17 @@
 <!--
 
     Copyright (C) 2009 eXo Platform SAS.
-    
+
     This is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as
     published by the Free Software Foundation; either version 2.1 of
     the License, or (at your option) any later version.
-    
+
     This software is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
-    
+
     You should have received a copy of the GNU Lesser General Public
     License along with this software; if not, write to the Free
     Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
@@ -21,43 +21,67 @@
 -->
 
 <node-navigation
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_3 http://www.gatein.org/xml/ns/gatein_objects_1_3"
-    xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_3">
-  <priority>2</priority>
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_3 http://www.gatein.org/xml/ns/gatein_objects_1_3"
+        xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_3">
+    <priority>2</priority>
 
-  <page-nodes>
-    <node>
-      <uri>administration</uri>
-      <name>administration</name>
-      <label>#{administration.title}</label>
+    <page-nodes>
+        <node>
+            <uri>administration</uri>
+            <name>administration</name>
+            <label>#{administration.title}</label>
+            <node>
+                <uri>administration/registry</uri>
+                <name>registry</name>
+                <label>#{administration.application-registry}</label>
+                <page-reference>group::/platform/administrators::registry</page-reference>
+            </node>
 
-      <node>
-        <uri>administration/registry</uri>
-        <name>registry</name>
-        <label>#{administration.application-registry}</label>
-        <page-reference>group::/platform/administrators::registry</page-reference>
-      </node>
+            <node>
+                <uri>administration/pageManagement</uri>
+                <name>pageManagement</name>
+                <label>#{administration.pageManagement}</label>
+                <page-reference>group::/platform/administrators::pageManagement</page-reference>
+            </node>
 
-      <node>
-        <uri>administration/pageManagement</uri>
-        <name>pageManagement</name>
-        <label>#{administration.pageManagement}</label>
-        <page-reference>group::/platform/administrators::pageManagement</page-reference>
-      </node>
+            <node>
+                <uri>administration/servicesManagement</uri>
+                <name>servicesManagement</name>
+                <label>Services Management</label>
+                <page-reference>group::/platform/administrators::servicesManagement</page-reference>
+            </node>
 
-      <node>
-        <uri>administration/servicesManagement</uri>
-        <name>servicesManagement</name>
-        <label>Services Management</label>
-        <page-reference>group::/platform/administrators::servicesManagement</page-reference>
-      </node>
-
-      <node>
-        <name>siteExportImport</name>
-        <label>Site Export/Import</label>
-        <page-reference>group::/platform/administrators::siteExportImport</page-reference>
-      </node>
-    </node>
-  </page-nodes>
+            <node>
+                <name>siteExportImport</name>
+                <label>Site Export/Import</label>
+                <page-reference>group::/platform/administrators::siteExportImport</page-reference>
+            </node>
+            <node>
+                <name>LRManagement</name>
+                <label xml:lang="en">LRManagement</label>
+                <visibility>DISPLAYED</visibility>
+                <node>
+                    <name>employee</name>
+                    <visibility>DISPLAYED</visibility>
+                    <page-reference>group::/platform/administrators::lrEmployee</page-reference>
+                </node>
+                <node>
+                    <name>lrTeamLeader</name>
+                    <visibility>DISPLAYED</visibility>
+                    <page-reference>group::/platform/administrators::lrTeamLeader</page-reference>
+                </node>
+                <node>
+                    <name>lrManager</name>
+                    <visibility>DISPLAYED</visibility>
+                    <page-reference>group::/platform/administrators::lrManager</page-reference>
+                </node>
+                <node>
+                    <name>lrActiveProcessInstances</name>
+                    <visibility>DISPLAYED</visibility>
+                    <page-reference>group::/platform/administrators::lrActiveProcessInstances</page-reference>
+                </node>
+            </node>
+        </node>
+    </page-nodes>
 </node-navigation>

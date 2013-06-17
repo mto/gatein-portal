@@ -21,101 +21,175 @@
 -->
 
 <page-set
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_3 http://www.gatein.org/xml/ns/gatein_objects_1_3"
-    xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_3">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_3 http://www.gatein.org/xml/ns/gatein_objects_1_3"
+        xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_3">
 
-  <page>
-    <name>newAccount</name>
-    <title>New Account</title>
-    <access-permissions>manager:/platform/administrators</access-permissions>
-    <edit-permission>manager:/platform/administrators</edit-permission>
-    <portlet-application>
-      <portlet>
-        <application-ref>exoadmin</application-ref>
-        <portlet-ref>AccountPortlet</portlet-ref>
-      </portlet>
-      <title>New Account</title>
-      <access-permissions>manager:/platform/administrators</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </portlet-application>
-  </page>
+    <page>
+        <name>newAccount</name>
+        <title>New Account</title>
+        <access-permissions>manager:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <portlet-application>
+            <portlet>
+                <application-ref>exoadmin</application-ref>
+                <portlet-ref>AccountPortlet</portlet-ref>
+            </portlet>
+            <title>New Account</title>
+            <access-permissions>manager:/platform/administrators</access-permissions>
+            <show-info-bar>false</show-info-bar>
+        </portlet-application>
+    </page>
 
-  <page>
-    <name>communityManagement</name>
-    <title>Community Management</title>
-    <access-permissions>manager:/platform/administrators</access-permissions>
-    <edit-permission>manager:/platform/administrators</edit-permission>
-    <portlet-application>
-      <portlet>
-        <application-ref>exoadmin</application-ref>
-        <portlet-ref>OrganizationPortlet</portlet-ref>
-      </portlet>
-      <title>Community Management</title>
-      <access-permissions>manager:/platform/administrators</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </portlet-application>
-  </page>
+    <page>
+        <name>communityManagement</name>
+        <title>Community Management</title>
+        <access-permissions>manager:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <portlet-application>
+            <portlet>
+                <application-ref>exoadmin</application-ref>
+                <portlet-ref>OrganizationPortlet</portlet-ref>
+            </portlet>
+            <title>Community Management</title>
+            <access-permissions>manager:/platform/administrators</access-permissions>
+            <show-info-bar>false</show-info-bar>
+        </portlet-application>
+    </page>
 
-  <page>
-    <name>registry</name>
-    <title>Registry</title>
-    <access-permissions>manager:/platform/administrators</access-permissions>
-    <edit-permission>manager:/platform/administrators</edit-permission>
-    <portlet-application>
-      <portlet>
-        <application-ref>exoadmin</application-ref>
-        <portlet-ref>ApplicationRegistryPortlet</portlet-ref>
-      </portlet>
-      <title>Application Registry</title>
-      <access-permissions>manager:/platform/administrators</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </portlet-application>
-  </page>
+    <page>
+        <name>registry</name>
+        <title>Registry</title>
+        <access-permissions>manager:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <portlet-application>
+            <portlet>
+                <application-ref>exoadmin</application-ref>
+                <portlet-ref>ApplicationRegistryPortlet</portlet-ref>
+            </portlet>
+            <title>Application Registry</title>
+            <access-permissions>manager:/platform/administrators</access-permissions>
+            <show-info-bar>false</show-info-bar>
+        </portlet-application>
+    </page>
 
-  <page>
-    <name>pageManagement</name>
-    <title>Page Management</title>
-    <access-permissions>manager:/platform/administrators</access-permissions>
-    <edit-permission>manager:/platform/administrators</edit-permission>
-    <portlet-application>
-      <portlet>
-        <application-ref>exoadmin</application-ref>
-        <portlet-ref>PageManagementPortlet</portlet-ref>
-      </portlet>
-      <title>Page Management</title>
-      <access-permissions>manager:/platform/administrators</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </portlet-application>
-  </page>
+    <page>
+        <name>pageManagement</name>
+        <title>Page Management</title>
+        <access-permissions>manager:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <portlet-application>
+            <portlet>
+                <application-ref>exoadmin</application-ref>
+                <portlet-ref>PageManagementPortlet</portlet-ref>
+            </portlet>
+            <title>Page Management</title>
+            <access-permissions>manager:/platform/administrators</access-permissions>
+            <show-info-bar>false</show-info-bar>
+        </portlet-application>
+    </page>
 
-  <page>
-    <name>servicesManagement</name>
-    <title>Services Management</title>
-    <access-permissions>manager:/platform/administrators</access-permissions>
-    <edit-permission>manager:/platform/administrators</edit-permission>
-    <gadget-application>
-      <gadget>
-        <gadget-ref>ServicesManagement</gadget-ref>
-      </gadget>
-      <title>Services Management</title>
-      <access-permissions>manager:/platform/administrators</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </gadget-application>
-  </page>
+    <page>
+        <name>servicesManagement</name>
+        <title>Services Management</title>
+        <access-permissions>manager:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <gadget-application>
+            <gadget>
+                <gadget-ref>ServicesManagement</gadget-ref>
+            </gadget>
+            <title>Services Management</title>
+            <access-permissions>manager:/platform/administrators</access-permissions>
+            <show-info-bar>false</show-info-bar>
+        </gadget-application>
+    </page>
 
-  <page>
-    <name>siteExportImport</name>
-    <title>Site Export/Import</title>
-    <access-permissions>manager:/platform/administrators</access-permissions>
-    <edit-permission>manager:/platform/administrators</edit-permission>
-    <gadget-application>
-      <gadget>
-        <gadget-ref>SiteExportImport</gadget-ref>
-      </gadget>
-      <title>Site Export/Import</title>
-      <access-permissions>manager:/platform/administrators</access-permissions>
-      <show-info-bar>false</show-info-bar>
-    </gadget-application>
-  </page>
+    <page>
+        <name>siteExportImport</name>
+        <title>Site Export/Import</title>
+        <access-permissions>manager:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <gadget-application>
+            <gadget>
+                <gadget-ref>SiteExportImport</gadget-ref>
+            </gadget>
+            <title>Site Export/Import</title>
+            <access-permissions>manager:/platform/administrators</access-permissions>
+            <show-info-bar>false</show-info-bar>
+        </gadget-application>
+    </page>
+
+    <page>
+        <name>lrEmployee</name>
+        <access-permissions>*:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <show-max-window>false</show-max-window>
+        <portlet-application>
+            <portlet>
+                <application-ref>leavecontrol</application-ref>
+                <portlet-ref>LeaveRequestPortlet</portlet-ref>
+            </portlet>
+            <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>true</show-info-bar>
+            <show-application-state>true</show-application-state>
+            <show-application-mode>true</show-application-mode>
+            <description>local._leavecontrol.LeaveRequestPortlet</description>
+        </portlet-application>
+    </page>
+    <page>
+        <name>lrTeamLeader</name>
+        <access-permissions>*:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <show-max-window>false</show-max-window>
+        <portlet-application>
+            <portlet>
+                <application-ref>leavecontrol</application-ref>
+                <portlet-ref>LRTeamLeaderViewPortlet</portlet-ref>
+            </portlet>
+            <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>true</show-info-bar>
+            <show-application-state>true</show-application-state>
+            <show-application-mode>true</show-application-mode>
+            <description>local._leavecontrol.LRTeamLeaderViewPortlet</description>
+        </portlet-application>
+    </page>
+    <page>
+        <name>lrManager</name>
+        <access-permissions>*:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <show-max-window>false</show-max-window>
+        <portlet-application>
+            <portlet>
+                <application-ref>leavecontrol</application-ref>
+                <portlet-ref>LRManagerViewPortlet</portlet-ref>
+            </portlet>
+            <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>true</show-info-bar>
+            <show-application-state>true</show-application-state>
+            <show-application-mode>true</show-application-mode>
+            <description>local._leavecontrol.LRManagerViewPortlet</description>
+        </portlet-application>
+    </page>
+    <page>
+        <name>lrActiveProcessInstances</name>
+        <access-permissions>*:/platform/administrators</access-permissions>
+        <edit-permission>manager:/platform/administrators</edit-permission>
+        <show-max-window>false</show-max-window>
+        <portlet-application>
+            <portlet>
+                <application-ref>leavecontrol</application-ref>
+                <portlet-ref>ProcessInstancesViewPortlet</portlet-ref>
+            </portlet>
+            <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>true</show-info-bar>
+            <show-application-state>true</show-application-state>
+            <show-application-mode>true</show-application-mode>
+            <description>local._leavecontrol.ProcessInstancesViewPortlet</description>
+        </portlet-application>
+    </page>
+
 </page-set>
